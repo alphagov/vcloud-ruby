@@ -19,7 +19,7 @@ require 'vcloud'
 @session.login('someuser@someorg', 'secretp@ssw0rd')
 @org = @session.get_org_from_name('myorg')
 @catalog = @org.get_catalog_from_name('TestCatalog')
-@vdc     = @org.get_vdc_from_name('TestVDC')
+@vdc = @org.get_vdc_from_name('TestVDC')
 @catalog_item = @catalog.get_catalog_item_from_name('TestLinuxTemplate')
 ```
 ...and so on.
