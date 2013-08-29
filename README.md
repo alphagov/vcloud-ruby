@@ -1,4 +1,4 @@
-# vcloud-ruby [![Build Status](https://travis-ci.org/nosborn/vcloud-ruby.png?branch=master)](https://travis-ci.org/nosborn/vcloud-ruby)
+# vcloud-ruby [![Build Status](https://travis-ci.org/nosborn/vcloud-ruby.png?branch=master)](https://travis-ci.org/nosborn/vcloud-ruby) [![Coverage Status](https://coveralls.io/repos/nosborn/vcloud-ruby/badge.png?branch=master)](https://coveralls.io/r/nosborn/vcloud-ruby?branch=master)
 
 Unofficial Ruby bindings to the VMware vCloud Director REST API.
 
