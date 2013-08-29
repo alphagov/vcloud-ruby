@@ -1,7 +1,5 @@
 module VCloud
   require 'happymapper'
-  require 'restclient'
-  require 'set'
 
   require 'vcloud/errors'
   require 'vcloud/constants'

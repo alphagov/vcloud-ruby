@@ -1,4 +1,4 @@
-require 'vcloud/rest_api'
+require 'rest_client'
 
 module VCloud
   module RestApi

@@ -1,3 +1,5 @@
+require 'set'
+
 module VCloud
   # Base class for all vCloud entities (Org, CatalogItem, vApp, etc.)
   class BaseVCloudEntity
