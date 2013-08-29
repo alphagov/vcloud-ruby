@@ -1,5 +1,6 @@
 module VCloud
-  # A reference to a resource. Contains an href attribute and optional name and type attributes.
+  # A reference to a resource. Contains an href attribute and optional name and
+  #   type attributes.
   class Reference
     include HappyMapper
 
@@ -16,8 +17,7 @@ module VCloud
       @href = args[:href]
     end
 
-    # Parse a VCloud::Reference from XML
-    #
+    # Parse a VCloud::Reference from XML.
     # @param [String] xml XML to parse
     # @return [VCloud::Reference] Reference that is parsed from the XML
     def self.from_xml(xml)

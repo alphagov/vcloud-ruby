@@ -1,5 +1,5 @@
 module VCloud
-  # Represents a vApp network configuration
+  # Represents a vApp network configuration.
   class NetworkConfig
     include ParsesXml
 
@@ -10,7 +10,7 @@ module VCloud
       element :fence_mode, String, :tag => 'FenceMode'
     end
 
-    # Networking fence modes
+    # Networking fence modes.
     module FenceMode
       BRIDGED = 'bridged'
       ISOLATED = 'isolated'

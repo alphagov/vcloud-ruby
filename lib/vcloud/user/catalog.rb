@@ -1,7 +1,6 @@
 module VCloud
-  # Contains a collection of CatalogItem references
+  # Contains a collection of CatalogItem references.
   class Catalog < BaseVCloudEntity
-
     has_type VCloud::Constants::ContentType::CATALOG
     tag 'Catalog'
     has_links
@@ -11,15 +10,14 @@ module VCloud
     end
     element :is_published, Boolean, :tag => 'IsPublished'
 
-    # Returns a hash of of all CatalogItem references, keyed by the CatalogItem name
-    #
+    # Returns a hash of of all CatalogItem references, keyed by the CatalogItem
+    #   name.
     # @return [Hash{String => VCloud::Reference}] Reference to all CatalogsItems in the Catalog, keyed by name
     def get_catalog_item_references_by_name
       Hash[catalog_item_references.collect{ |i| [i.name, i] }]
     end
 
-    # Retrieves an CatalogItem, assuming the user has access to it
-    #
+    # Retrieves a CatalogItem, assuming the user has access to it.
     # @param [String] name CatalogItem name
     # @param [VCloud::Client] session Session to use to retrieve the CatalogItem
     # @return [VCloud::CatalogItem] CatalogItem object

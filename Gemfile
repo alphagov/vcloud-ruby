@@ -9,8 +9,14 @@ group :documentation do
   gem 'yard'
 end
 
+group :repl do
+  gem 'awesome_print'
+  gem 'pry'
+end
+
 group :test do
   gem 'rspec'
   gem 'rspec-mocks'
+  gem 'simplecov', :require => false
   gem 'webmock'
 end

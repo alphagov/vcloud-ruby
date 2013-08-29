@@ -9,26 +9,25 @@ module VCloud
     has_default_attributes
     has_many :tasks, 'VCloud::Task'
 
-    # Power on all VMs iin the vApp. This operation is available only for a vApp that is powered off.
-    #
+    # Power on all VMs in the vApp. This operation is available only for a vApp
+    #   that is powered off.
     # @return [VCloud::Task] Task used to monitor the power on event
     def power_on
       link = links.select{ |l| l.rel == "power:powerOn" }.first
       post_task(link)
     end
 
-    # def power_off
-    #   link = links.select{ |l| l.rel == "power:powerOff" }.first
-    #   post_task(link)
-    # end
+    #def power_off
+    #  link = links.select{ |l| l.rel == "power:powerOff" }.first
+    #  post_task(link)
+    #end
     #
-    # def suspend
-    #   link = links.select{ |l| l.rel == "power:suspend" }.first
-    #   post_task(link)
-    # end
+    #def suspend
+    #  link = links.select{ |l| l.rel == "power:suspend" }.first
+    #  post_task(link)
+    #end
 
-    # Delete the vApp
-    #
+    # Delete the vApp.
     # @return [VCloud::Task] Task used to monitor the delete vApp event
     def remove
       link = links.select{ |l| l.rel == "remove" }.first
@@ -38,13 +37,13 @@ module VCloud
       task
     end
 
-    # def deploy
-    #   link = links.select{ |l| l.rel == "deploy" }.first
-    #   post_task(link)
-    # end
+    #def deploy
+    #  link = links.select{ |l| l.rel == "deploy" }.first
+    #  post_task(link)
+    #end
 
-    # Undeployment deallocates all resources used by the vApp and the VMs it contains
-    #
+    # Undeployment deallocates all resources used by the vApp and the VMs it
+    #   contains.
     # @param [VCloud::VApp::UndeployPowerAction] power_action
     # @return [VCloud::Task] Task used to monitor the undeploy vApp event
     def undeploy(power_action)
@@ -76,7 +75,7 @@ module VCloud
       task
     end
 
-    # The specified action is applied to all VMs in the vApp
+    # The specified action is applied to all VMs in the vApp.
     # All values other than 'default' ignore actions, order, and delay specified in the StartupSection.
     module UndeployPowerAction
       # Power off the VMs. This is the default action if this attribute is missing or empty)
@@ -90,10 +89,9 @@ module VCloud
       # Use the actions, order, and delay specified in the StartupSection
       DEFAULT   = 'default'
     end
-
   end
 
-  # Paramater passed when undeploying a VApp
+  # Parameter passed when undeploying a VApp.
   class UndeployVAppParams
     include HappyMapper
     register_namespace 'xmlns', VCloud::Constants::NameSpace::V1_5

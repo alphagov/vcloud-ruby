@@ -1,5 +1,5 @@
 module VCloud
-  # Represents an asynchronous operation in vCloud Director
+  # Represents an asynchronous operation in vCloud Director.
   class Task < BaseVCloudEntity
     require 'timeout'
 
@@ -15,10 +15,11 @@ module VCloud
     attribute :operation,       String
     attribute :expiry_time,     String, :tag => 'expiryTime'
 
-    # Wait until the status of the task is set to indicate that the task has completed
-    #
+    # Wait until the status of the task is set to indicate that the task has
+    #   completed.
     # @param [Integer] timeout Timeout in seconds
-    # @yield Block to run upon completion or the timeout is reached, whichever comes first
+    # @yield Block to run upon completion or the timeout is reached, whichever
+    #   comes first
     def wait_to_finish(timeout = 60 * 10)
       first_run = true
       Timeout::timeout(timeout) do
@@ -31,7 +32,7 @@ module VCloud
       yield(self) if block_given?
     end
 
-    # Task status as it's being processed
+    # Task status as it's being processed.
     module Status
       # The task has been queued for execution
       QUEUED      = 'queued'
@@ -48,7 +49,12 @@ module VCloud
       # The task was aborted by an administrative action
       ABORTED     = 'aborted'
     end
-    @@completed_statuses = [Status::SUCCESS, Status::ERROR, Status::CANCELED, Status::ABORTED]
 
+    @@completed_statuses = [
+      Status::SUCCESS,
+      Status::ERROR,
+      Status::CANCELED,
+      Status::ABORTED
+    ]
   end
 end
