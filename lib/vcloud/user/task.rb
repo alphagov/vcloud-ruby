@@ -2,7 +2,7 @@ module VCloud
   # Represents an asynchronous operation in vCloud Director
   class Task < BaseVCloudEntity
     require 'timeout'
-    
+
     include ParsesXml
 
     has_type VCloud::Constants::ContentType::TASK
@@ -10,7 +10,7 @@ module VCloud
     has_links
     has_default_attributes
     attribute :status,          String
-    attribute :start_time,      String, :tag => 'startTime' 
+    attribute :start_time,      String, :tag => 'startTime'
     attribute :operation_name,  String, :tag => 'operationName'
     attribute :operation,       String
     attribute :expiry_time,     String, :tag => 'expiryTime'
@@ -19,12 +19,12 @@ module VCloud
     #
     # @param [Integer] timeout Timeout in seconds
     # @yield Block to run upon completion or the timeout is reached, whichever comes first
-    def wait_to_finish(timeout = 60 * 10) 
+    def wait_to_finish(timeout = 60 * 10)
       first_run = true
-      Timeout::timeout(timeout) do        
+      Timeout::timeout(timeout) do
         until @@completed_statuses.include?(self.status)
           sleep 3 if not first_run
-          refresh    
+          refresh
           first_run = false
         end
       end
@@ -46,7 +46,7 @@ module VCloud
       # The task was canceled by the owner or an administrator
       CANCELED    = 'canceled'
       # The task was aborted by an administrative action
-      ABORTED     = 'aborted'    
+      ABORTED     = 'aborted'
     end
     @@completed_statuses = [Status::SUCCESS, Status::ERROR, Status::CANCELED, Status::ABORTED]
 

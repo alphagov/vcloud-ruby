@@ -2,7 +2,7 @@ module VCloud
   # Defines a hyper-link with a relationship, hyper-link reference, and an optional MIME type
   class Link
     include HappyMapper
-    
+
     tag 'Link'
     attribute :rel, 'String'
     attribute :type, 'String'

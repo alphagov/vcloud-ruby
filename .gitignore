@@ -1,5 +1,8 @@
-pkg
-ignore_test
-vendor
-doc
-.yardoc
+/.bundle/
+/.ruby-version
+/.yardoc/
+/Gemfile.lock
+/bundle/
+/doc/
+/pkg/
+/vendor/

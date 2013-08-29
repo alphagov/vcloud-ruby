@@ -17,7 +17,7 @@ module VCloud
     def get_catalog_item_references_by_name
       Hash[catalog_item_references.collect{ |i| [i.name, i] }]
     end
-    
+
     # Retrieves an CatalogItem, assuming the user has access to it
     #
     # @param [String] name CatalogItem name

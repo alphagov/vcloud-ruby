@@ -17,10 +17,10 @@ module VCloud
           attribute :id, 'String'
           attribute :type, 'String'
           attribute :name, 'String'
-          attribute :href, 'String'           
+          attribute :href, 'String'
         end
       end
-      
+
       def from_xml(xml)
         parse(xml)
       end

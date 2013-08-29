@@ -3,7 +3,7 @@ require 'spec_helper'
 include WebMock::API
 
 describe VCloud::InstantiateVAppTemplateParams do
-   
+
   it 'should #initialize' do
     params = VCloud::InstantiateVAppTemplateParams.new
     params.name.should == ''
@@ -15,12 +15,12 @@ describe VCloud::InstantiateVAppTemplateParams do
     params.is_source_delete.should == false
     params.all_eulas_accepted.should == false
   end
-  
+
   describe 'when parsing xml #from_xml' do
     before(:each) do
       @params = VCloud::InstantiateVAppTemplateParams.from_xml(fixture_file('instantiate_vapp_template_params.xml'))
     end
-    
+
     it 'should have correct values' do
       @params.name.should == 'SomeVAppTemplateParams'
       @params.deploy.should == true
@@ -30,7 +30,7 @@ describe VCloud::InstantiateVAppTemplateParams do
       @params.source_reference.href.should == 'https://vcloud.example.com/api/vAppTemplate/vappTemplate-111'
       @params.is_source_delete.should == false
       @params.all_eulas_accepted.should == true
-    end    
+    end
   end
 
 
@@ -43,7 +43,7 @@ describe VCloud::InstantiateVAppTemplateParams do
     params.network_config_section = 'blagow'
     params.source_reference =  VCloud::Reference.new :href => 'https://vcloud.example.com/api/vAppTemplate/vappTemplate-111'
     params.is_source_delete = true
-    params.all_eulas_accepted = true    
+    params.all_eulas_accepted = true
 
     xml = params.to_xml
     doc = Nokogiri::XML(xml)
@@ -56,5 +56,5 @@ describe VCloud::InstantiateVAppTemplateParams do
     doc.xpath('/xmlns:InstantiateVAppTemplateParams/xmlns:Source/@href').text.should == 'https://vcloud.example.com/api/vAppTemplate/vappTemplate-111'
     doc.xpath('/xmlns:InstantiateVAppTemplateParams/xmlns:IsSourceDelete').text.should == 'true'
     doc.xpath('/xmlns:InstantiateVAppTemplateParams/xmlns:AllEULAsAccepted').text.should == 'true'
-  end   
+  end
 end

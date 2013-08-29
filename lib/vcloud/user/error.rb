@@ -1,7 +1,7 @@
 module VCloud
   class Error
     include ParsesXml
-    
+
     tag 'Error'
     attribute :message,                     String
     attribute :major_error_code,            Integer,  :tag => "majorErrorCode"

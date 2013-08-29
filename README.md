@@ -1,26 +1,22 @@
-vcloud-ruby
-===========
+# vcloud-ruby
 
-DESCRIPTION
------------
+## DESCRIPTION
 
 Ruby bindings to the VMware vCloud Director REST API
 
 This is a work in progress, but it currently supports enough functionality to perform the entire Hello vCloud example in the [vCloud API Guide](http://www.vmware.com/pdf/vcd_15_api_guide.pdf).
 
+## INSTALL
 
-INSTALL
--------
+````shell
+gem install vcloud
+````
 
-<pre>gem install vcloud</pre>
-
-
-USAGE
------
+## USAGE
 
 The examples/hello_vcloud.rb file demonstrates basic usage of the gem, for example...
 
-```
+```ruby
 require 'vcloud'
 @session = VCloud::Client.new("https://my.vcloud.local/api/"), '1.5')
 @session.login('someuser@someorg', 'secretp@ssw0rd)
@@ -32,16 +28,16 @@ require 'vcloud'
 
 ...and so on
 
-CONTRIBUTE
-----------
+## CONTRIBUTE
+
 * Fork the project
 * Make your feature addition or bug fix.
 * Add tests
 * Commit, do not modify with rakefile or version, we'll handle this
 * Send a pull request
 
-LICENSE
--------
+## LICENSE
+
 (The MIT License)
 
 Copyright © 2012 Diebold, Inc. [http://www.diebold.com](http://www.diebold.com)

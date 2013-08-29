@@ -1,8 +1,8 @@
 module VCloud
   # A reference to a resource. Contains an href attribute and optional name and type attributes.
   class Reference
-    include HappyMapper 
-    
+    include HappyMapper
+
     tag '*'
     attribute :id, 'String'
     attribute :type, 'String'

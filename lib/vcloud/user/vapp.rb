@@ -14,19 +14,19 @@ module VCloud
     # @return [VCloud::Task] Task used to monitor the power on event
     def power_on
       link = links.select{ |l| l.rel == "power:powerOn" }.first
-      post_task(link) 
+      post_task(link)
     end
 
     # def power_off
     #   link = links.select{ |l| l.rel == "power:powerOff" }.first
-    #   post_task(link)       
+    #   post_task(link)
     # end
-    # 
+    #
     # def suspend
     #   link = links.select{ |l| l.rel == "power:suspend" }.first
-    #   post_task(link)  
-    # end 
-    
+    #   post_task(link)
+    # end
+
     # Delete the vApp
     #
     # @return [VCloud::Task] Task used to monitor the delete vApp event
@@ -41,25 +41,25 @@ module VCloud
     # def deploy
     #   link = links.select{ |l| l.rel == "deploy" }.first
     #   post_task(link)
-    # end   
-    
+    # end
+
     # Undeployment deallocates all resources used by the vApp and the VMs it contains
     #
     # @param [VCloud::VApp::UndeployPowerAction] power_action
     # @return [VCloud::Task] Task used to monitor the undeploy vApp event
-    def undeploy(power_action)             
+    def undeploy(power_action)
       undeploy_params = UndeployVAppParams.new
       undeploy_params.undeploy_power_action = power_action
 
       link = links.select{ |l| l.rel == "undeploy" }.first
 
-      result = post(link.href, undeploy_params.to_xml, VCloud::Constants::ContentType::UNDEPLOY_VAPP_PARAMS) 
-  
+      result = post(link.href, undeploy_params.to_xml, VCloud::Constants::ContentType::UNDEPLOY_VAPP_PARAMS)
+
       task = VCloud::Task.from_xml(result)
       task.session = self.session
       task
-    end  
-    
+    end
+
     def parse_xml(xml)
       super xml
       if self.session
@@ -68,22 +68,22 @@ module VCloud
         end
       end
     end
- 
+
     def post_task(link)
       result = post(link.href, nil, VCloud::Constants::ACCEPT_HEADER)
       task = VCloud::Task.from_xml(result)
-      task.session = self.session       
-      task  
+      task.session = self.session
+      task
     end
-    
-    # The specified action is applied to all VMs in the vApp. 
+
+    # The specified action is applied to all VMs in the vApp
     # All values other than 'default' ignore actions, order, and delay specified in the StartupSection.
     module UndeployPowerAction
-      # Power off the VMs. This is the default action if this attribute is missing or empty)     
+      # Power off the VMs. This is the default action if this attribute is missing or empty)
       POWER_OFF = 'powerOff'
       # Suspend the VMs
-      SUSPEND   = 'suspend' 
-      # Shut down the VMs  
+      SUSPEND   = 'suspend'
+      # Shut down the VMs
       SHUTDOWN  = 'shutdown'
       # Attempt to power off the VMs. Failures in undeploying the VM or associated networks are ignored. All references to the vApp and its VMs are removed from the database
       FORCE     = 'force'
@@ -92,12 +92,12 @@ module VCloud
     end
 
   end
-  
+
   # Paramater passed when undeploying a VApp
   class UndeployVAppParams
     include HappyMapper
     register_namespace 'xmlns', VCloud::Constants::NameSpace::V1_5
     tag 'UndeployVAppParams'
-    element :undeploy_power_action, String, :tag => 'UndeployPowerAction'    
+    element :undeploy_power_action, String, :tag => 'UndeployPowerAction'
   end
 end

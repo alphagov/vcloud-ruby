@@ -15,7 +15,7 @@ module VCloud
     element :source_reference,    'VCloud::Reference',  :tag => 'Source'
     element :is_source_delete,    Boolean,              :tag => 'IsSourceDelete'
     element :all_eulas_accepted,  Boolean,              :tag => 'AllEULAsAccepted'
-    
+
     # A new instance of InstantiateVAppTemplateParams
     #
     # @param [String] name Name of the vApp

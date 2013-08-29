@@ -1,16 +1,15 @@
-# Require files in lib/vcloud
-
 module VCloud
-  require 'restclient'
   require 'happymapper'
+  require 'restclient'
   require 'set'
 
   require 'vcloud/errors'
   require 'vcloud/constants'
-  require 'vcloud/parses_xml'
   require 'vcloud/rest_api'
+  require 'vcloud/parses_xml'
   require 'vcloud/base_vcloud_entity'
-  
-  require 'vcloud/user'  
+
   require 'vcloud/client'
+  require 'vcloud/user'
+  require 'vcloud/admin'
 end
