@@ -2,21 +2,27 @@ $:.unshift(File.dirname(__FILE__) + '/lib')
 
 require 'vcloud/version'
 
-Gem::Specification.new do |gem|
-  gem.authors       = ["Brian McClain", "Zach Robinson"]
-  gem.description   = %q{vCloud Director API Ruby Bindings}
-  gem.summary       = gem.summary
-  gem.homepage      = 'https://github.com/nosborn/vcloud-ruby'
+Gem::Specification.new do |s|
+  s.name = 'vcloud'
+  s.version = VCloud::VERSION
+  s.summary = 'vCloud Director API Ruby Bindings'
+  s.description = s.summary
+  s.license = 'MIT'
+  s.authors = ['Nick Osborn', 'Brian McClain', 'Zach Robinson']
+  s.homepage = 'https://github.com/nosborn/vcloud-ruby'
 
-  gem.files         = `git ls-files`.split($\)
-  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
-  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.name          = 'vcloud'
-  gem.require_paths = ['lib']
-  gem.version       = VCloud::VERSION
+  s.required_ruby_version = '>= 1.9.1'
 
-  gem.required_ruby_version = '>= 1.9.1'
+  s.add_dependency 'nokogiri-happymapper', '0.5.5'
+  s.add_dependency 'rest-client'
 
-  gem.add_dependency 'nokogiri-happymapper', '0.5.5'
-  gem.add_dependency 'rest-client', '1.6.7'
+  s.files = [
+    '.yardopts',
+    'LICENSE',
+    'README.md',
+  ]
+  s.files += Dir['lib/**/*.rb']
+
+  s.bindir = 'bin'
+  s.executables << 'vcloud-rb'
 end
