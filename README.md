@@ -1,6 +1,6 @@
 # vcloud-ruby [![Build Status](https://travis-ci.org/nosborn/vcloud-ruby.png?branch=master)](https://travis-ci.org/nosborn/vcloud-ruby)
 
-Ruby bindings to the VMware vCloud Director REST API.
+Unofficial Ruby bindings to the VMware vCloud Director REST API.
 
 This is a work in progress, but it currently supports enough functionality to
 perform the entire Hello vCloud example in the
