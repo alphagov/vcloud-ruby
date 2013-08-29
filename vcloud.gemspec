@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 1.9.1'
 
-  s.add_dependency 'nokogiri-happymapper', '0.5.5'
+  s.add_dependency 'nokogiri-happymapper', '< 0.5.7'
   s.add_dependency 'rest-client'
 
   s.files = [
