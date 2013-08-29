@@ -1,42 +1,30 @@
-# vcloud-ruby
+# vcloud-ruby [![Build Status](https://travis-ci.org/nosborn/vcloud-ruby.png?branch=master)](https://travis-ci.org/nosborn/vcloud-ruby)
 
-## DESCRIPTION
-
-Ruby bindings to the VMware vCloud Director REST API
+Ruby bindings to the VMware vCloud Director REST API.
 
 This is a work in progress, but it currently supports enough functionality to perform the entire Hello vCloud example in the [vCloud API Guide](http://www.vmware.com/pdf/vcd_15_api_guide.pdf).
 
-## INSTALL
+## Installation
 
 ````shell
 gem install vcloud
 ````
 
-## USAGE
+## Basic Usage
 
 The examples/hello_vcloud.rb file demonstrates basic usage of the gem, for example...
-
 ```ruby
 require 'vcloud'
-@session = VCloud::Client.new("https://my.vcloud.local/api/"), '1.5')
-@session.login('someuser@someorg', 'secretp@ssw0rd)
+@session = VCloud::Client.new('https://my.vcloud.local/api/'), '1.5')
+@session.login('someuser@someorg', 'secretp@ssw0rd')
 @org = @session.get_org_from_name('myorg')
 @catalog = @org.get_catalog_from_name('TestCatalog')
 @vdc     = @org.get_vdc_from_name('TestVDC')
 @catalog_item = @catalog.get_catalog_item_from_name('TestLinuxTemplate')
 ```
+...and so on.
 
-...and so on
-
-## CONTRIBUTE
-
-* Fork the project
-* Make your feature addition or bug fix.
-* Add tests
-* Commit, do not modify with rakefile or version, we'll handle this
-* Send a pull request
-
-## LICENSE
+## License
 
 (The MIT License)
 
