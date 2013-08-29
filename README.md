@@ -8,9 +8,14 @@ perform the entire Hello vCloud example in the
 
 ## Installation
 
-````shell
-gem install vcloud
-````
+You can install vcloud-ruby with rubygems:
+
+    gem install vcloud
+
+If you are using bundler, we recommend that you express a major version
+dependency (vcloud-ruby follows [semantic versioning](http://semver.org/)):
+
+    gem 'vcloud-ruby', '~> 1.0'
 
 ## Basic Usage
 
