@@ -9,5 +9,4 @@ module VCloud
 
   require 'vcloud/client'
   require 'vcloud/user'
-  require 'vcloud/admin'
 end
