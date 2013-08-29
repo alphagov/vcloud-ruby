@@ -1,6 +1,5 @@
 require 'bundler/gem_tasks'
 require 'rspec/core/rake_task'
-require 'yard'
 
 RSpec::Core::RakeTask.new(:spec) do |spec|
   spec.pattern = 'spec/*_spec.rb'
@@ -8,4 +7,8 @@ RSpec::Core::RakeTask.new(:spec) do |spec|
 end
 task :default => :spec
 
-YARD::Rake::YardocTask.new(:doc)
+begin
+  require 'yard'
+  YARD::Rake::YardocTask.new(:doc)
+rescue LoadError
+end
