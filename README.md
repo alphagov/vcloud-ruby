@@ -29,8 +29,8 @@ require 'vcloud'
 
 ## License
 
-This software is distributed under the
-[MIT License](http://opensource.org/licenses/MIT).
+This software is distributed under
+[the MIT License (MIT)](http://opensource.org/licenses/MIT).
 
 ```no-highlight
 The MIT License (MIT)
