@@ -25,7 +25,7 @@ describe VCloud::CatalogItem do
       with(:headers => {'Accept'=>'application/vnd.vmware.vcloud.catalogItem+xml;version=1.5', 'X-Vcloud-Authorization'=>'abc123xyz'}).
       to_return(:status => 200, :body => fixture_file('catalog_item.xml'))
 
-      item = VCloud::CatalogItem.from_reference(stub(:href => 'https://vcloud.diebold.dev/api/catalogItem/aaa-bbb-ccc-ddd-eee-fff'), @session)
+      item = VCloud::CatalogItem.from_reference(double(:href => 'https://vcloud.diebold.dev/api/catalogItem/aaa-bbb-ccc-ddd-eee-fff'), @session)
 
       WebMock.should have_requested(:get, 'https://vcloud.diebold.dev/api/catalogItem/aaa-bbb-ccc-ddd-eee-fff').
         with(:headers => {'Accept'=>'application/vnd.vmware.vcloud.catalogItem+xml;version=1.5', 'X-Vcloud-Authorization'=>'abc123xyz'})

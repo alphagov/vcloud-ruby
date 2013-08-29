@@ -44,7 +44,7 @@ describe VCloud::Vdc do
       with(:headers => {'Accept'=>'application/vnd.vmware.vcloud.vdc+xml;version=1.5', 'X-Vcloud-Authorization'=>'abc123xyz'}).
       to_return(:status => 200, :body => fixture_file('vdc.xml'))
 
-    vdc = VCloud::Vdc.from_reference(stub(:href => 'https://some.vcloud.com/api/vdc/aaa-bbb-ccc-ddd-eee-fff'), @session)
+    vdc = VCloud::Vdc.from_reference(double(:href => 'https://some.vcloud.com/api/vdc/aaa-bbb-ccc-ddd-eee-fff'), @session)
 
     WebMock.should have_requested(:get, 'https://some.vcloud.com/api/vdc/aaa-bbb-ccc-ddd-eee-fff').
       with(:headers => {'Accept'=>'application/vnd.vmware.vcloud.vdc+xml;version=1.5', 'X-Vcloud-Authorization'=>'abc123xyz'})

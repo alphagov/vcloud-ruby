@@ -1,7 +1,6 @@
 module VCloud
   module Constants
-
-    # vCloud Director API versions
+    # vCloud Director API versions.
     module Version
       V0_9 = '0.9'
       V1_5 = '1.5'
@@ -11,7 +10,7 @@ module VCloud
     ACCEPT_HEADER = 'application/*+xml'
     XML_ENCODING = 'UTF-8'
 
-    # vCloud Director MIME types
+    # vCloud Director MIME types.
     module ContentType
       CATALOG                          = 'application/vnd.vmware.vcloud.catalog+xml'
       CATALOG_ITEM                     = 'application/vnd.vmware.vcloud.catalogItem+xml'
@@ -27,12 +26,11 @@ module VCloud
       VDC                              = 'application/vnd.vmware.vcloud.vdc+xml'
     end
 
-    # vCloud Director API XML namespaces
+    # vCloud Director API XML namespaces.
     module NameSpace
       V1_5 = 'http://www.vmware.com/vcloud/v1.5'
       OVF = 'http://schemas.dmtf.org/ovf/envelope/1'
       XSI = 'http://www.w3.org/2001/XMLSchema-instance'
     end
-
   end
 end

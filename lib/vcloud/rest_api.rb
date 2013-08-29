@@ -40,7 +40,8 @@ module VCloud
           return response.body
         when 400, 401, 403, 404, 405, 500, 501, 503 then
 
-          # If there is a body, try to parse as Error xml doc and raise exception
+          # If there is a body, try to parse as Error xml doc and raise
+          # exception.
           if not response.body.strip.empty?
             error = VCloud::Error.from_xml(response.body)
             if error.instance_of?(VCloud::Error)

@@ -37,9 +37,12 @@ module VCloud
     def login(username, password)
       return true if @logged_in
 
-      url = @api_version > VCloud::Constants::Version::V0_9 ? @url + SESSION : @url + LOGIN
+      url = @api_version > VCloud::Constants::Version::V0_9 ?
+        @url + SESSION :
+        @url + LOGIN
 
-      response = post(url, nil, nil, self, :user => username, :password => password)
+      response = post(url, nil, nil, self, :user => username,
+                      :password => password)
       parse_xml(response)
 
       @token = { TOKEN => response.headers[TOKEN] }
@@ -49,13 +52,15 @@ module VCloud
     end
 
     # Returns a hash of of all Org refs keyed by the Org name.
-    # @return [Hash{String => VCloud::Reference}] Reference to all Orgs the user has access to, keyed by Org name
+    # @return [Hash{String => VCloud::Reference}] Reference to all Orgs the
+    #   user has access to, keyed by Org name
     def get_org_references_by_name()
       Hash[get_org_references.collect{ |i| [i.name, i] }]
     end
 
     # Returns an OrgList that contains all of the Orgs the user has access to.
-    # @return [VCloud::OrgList] OrgList that contains all of the Orgs the user has access to
+    # @return [VCloud::OrgList] OrgList that contains all of the Orgs the user
+    #   has access to.
     def get_org_references()
       OrgList.from_reference(get_orglist_link, self).org_references
     end
@@ -83,7 +88,8 @@ module VCloud
     end
 
     # Destroy the current session.
-    # @return [Boolean] True if the session was destroyed, false if it could not be destroyed or a session does not exist
+    # @return [Boolean] True if the session was destroyed, false if it could
+    #   not be destroyed or a session does not exist
     def logout
       return false if not logged_in?
 

@@ -40,7 +40,7 @@ describe VCloud::Task do
         with(:headers => {'Accept'=>'application/vnd.vmware.vcloud.task+xml;version=1.5', 'X-Vcloud-Authorization'=>'abc123xyz'}).
         to_return(:status => 200, :body => lambda{|request| t=VCloud::Task.new;t.status='success';t.to_xml})
 
-       lambda {@task.wait_to_finish(54)}.should_not raise_error(Timeout::Error)
+       lambda {@task.wait_to_finish(54)}.should_not raise_error()
        @task.status.should == 'success'
     end
 
@@ -49,7 +49,7 @@ describe VCloud::Task do
         with(:headers => {'Accept'=>'application/vnd.vmware.vcloud.task+xml;version=1.5', 'X-Vcloud-Authorization'=>'abc123xyz'}).
         to_return(:status => 200, :body => lambda{|request| t=VCloud::Task.new;t.status='error';t.to_xml})
 
-       lambda {@task.wait_to_finish(54)}.should_not raise_error(Timeout::Error)
+       lambda {@task.wait_to_finish(54)}.should_not raise_error()
        @task.status.should == 'error'
     end
 
@@ -58,7 +58,7 @@ describe VCloud::Task do
         with(:headers => {'Accept'=>'application/vnd.vmware.vcloud.task+xml;version=1.5', 'X-Vcloud-Authorization'=>'abc123xyz'}).
         to_return(:status => 200, :body => lambda{|request| t=VCloud::Task.new;t.status='canceled';t.to_xml})
 
-       lambda {@task.wait_to_finish(54)}.should_not raise_error(Timeout::Error)
+       lambda {@task.wait_to_finish(54)}.should_not raise_error()
        @task.status.should == 'canceled'
     end
 
@@ -67,7 +67,7 @@ describe VCloud::Task do
         with(:headers => {'Accept'=>'application/vnd.vmware.vcloud.task+xml;version=1.5', 'X-Vcloud-Authorization'=>'abc123xyz'}).
         to_return(:status => 200, :body => lambda{|request| t=VCloud::Task.new;t.status='aborted';t.to_xml})
 
-       lambda {@task.wait_to_finish(54)}.should_not raise_error(Timeout::Error)
+       lambda {@task.wait_to_finish(54)}.should_not raise_error()
        @task.status.should == 'aborted'
     end
   end
