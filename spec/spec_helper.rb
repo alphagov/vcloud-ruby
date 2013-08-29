@@ -1,3 +1,13 @@
+require 'simplecov'
+require 'coveralls'
+Coveralls.wear!
+
+SimpleCov.start do
+  add_filter 'bundle/'
+  add_filter 'spec/'
+  add_filter 'vendor/'
+end
+
 require 'webmock/rspec'
 
 require_relative '../lib/vcloud'
@@ -16,5 +26,5 @@ RSpec.configure do |config|
 end
 
 def fixture_file(filename)
-  File.read(File.dirname(__FILE__) + "/fixtures/#{filename}")
+  File.read(File.join(File.dirname(__FILE__), 'fixtures', filename))
 end

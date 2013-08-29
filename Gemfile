@@ -15,6 +15,7 @@ group :repl do
 end
 
 group :test do
+  gem 'coveralls', :require => false
   gem 'rspec'
   gem 'rspec-mocks'
   gem 'simplecov', :require => false
