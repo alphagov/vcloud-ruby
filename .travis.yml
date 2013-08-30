@@ -9,3 +9,6 @@ branches:
     master
 
 bundler_args: --without='development documentation'
+
+notifications:
+  email: false
