@@ -1,7 +1,7 @@
-require 'rest_client'
-
 module VCloud
   module RestApi
+    require 'rest_client'
+
     def refresh(session = self.session)
       http_opts = build_generic_http_opts(@href, nil, nil, session, {})
       http_opts.merge!(:method => 'get')
@@ -59,8 +59,8 @@ module VCloud
 
           major_error_code = response.code
           short_message = VCloud::Errors::HTTPMessage[response.code][:short_message]
-          long_message  = VCloud::Errors::HTTPMessage[response.code][:message]
-          message       = "#{short_message} - #{long_message}"
+          long_message = VCloud::Errors::HTTPMessage[response.code][:message]
+          message = "#{short_message} - #{long_message}"
 
           raise VCloud::VCloudError.new(message, major_error_code)
         else
@@ -78,10 +78,10 @@ module VCloud
       headers = {:accept => VCloud::Constants::ACCEPT_HEADER+";version=#{session.api_version}"}.merge(session.token)
       headers.merge!(:content_type => content_type) if content_type
       {
-        :url        => url,
-        :payload    => payload,
+        :url => url,
+        :payload => payload,
         :verify_ssl => session.verify_ssl,
-        :headers    => headers
+        :headers => headers
       }.merge(opts)
     end
 

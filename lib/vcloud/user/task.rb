@@ -9,11 +9,11 @@ module VCloud
     tag 'Task'
     has_links
     has_default_attributes
-    attribute :status,          String
-    attribute :start_time,      String, :tag => 'startTime'
-    attribute :operation_name,  String, :tag => 'operationName'
-    attribute :operation,       String
-    attribute :expiry_time,     String, :tag => 'expiryTime'
+    attribute :status,         String
+    attribute :start_time,     String, :tag => 'startTime'
+    attribute :operation_name, String, :tag => 'operationName'
+    attribute :operation,      String
+    attribute :expiry_time,    String, :tag => 'expiryTime'
 
     # Wait until the status of the task is set to indicate that the task has
     #   completed.

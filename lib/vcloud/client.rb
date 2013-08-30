@@ -38,8 +38,7 @@ module VCloud
       return true if @logged_in
 
       url = @api_version > VCloud::Constants::Version::V0_9 ?
-        @url + SESSION :
-        @url + LOGIN
+        @url + SESSION : @url + LOGIN
 
       response = post(url, nil, nil, self, :user => username,
                       :password => password)
@@ -93,7 +92,8 @@ module VCloud
     def logout
       return false if not logged_in?
 
-      url = @api_version > VCloud::Constants::Version::V0_9 ? @url + LOGOUT_SESSION : @url + LOGIN
+      url = @api_version > VCloud::Constants::Version::V0_9 ?
+        @url + LOGOUT_SESSION : @url + LOGIN
 
       begin
         delete(url, nil, nil, self)
