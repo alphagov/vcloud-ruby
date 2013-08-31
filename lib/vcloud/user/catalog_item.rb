@@ -1,6 +1,6 @@
 module VCloud
-  # Contains a reference to a VappTemplate or Media object and related
-  #   metadata.
+  # Contains a reference to a VAppTemplate or Media object and related
+  # metadata.
   class CatalogItem < BaseVCloudEntity
     has_type VCloud::Constants::ContentType::CATALOG_ITEM
     tag 'CatalogItem'

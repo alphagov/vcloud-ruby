@@ -11,7 +11,7 @@ module VCloud
       base.class_eval { attr_accessor :session }
     end
 
-    def initialize(params = {})
+    def initialize(params={})
       initialize_args.each do |arg|
         self.instance_variable_set("@#{arg}".to_sym, params[arg])
       end
@@ -22,31 +22,31 @@ module VCloud
       self.class_variable_get(:@@content_type)
     end
 
-    # Retrieve an entity from a VCloud::Reference
+    # Retrieve an entity from a VCloud::Reference.
     #
     # @param [VCloud::Reference] ref Reference to retrieve the entity with
     # @param [VCloud::Client] session Session to authenticate with when
-    #   retrieving the entity
-    # @return [VCloud::BaseVCloudEntity] Entity from vCloud Director
+    #   retrieving the entity.
+    # @return [VCloud::BaseVCloudEntity] Entity from vCloud Director.
     def self.from_reference(ref, session)
       obj = new(:href => ref.href, :session => session)
       obj.refresh
       obj
     end
 
-    def self.attr_reader *args
+    def self.attr_reader(*args)
       super(*args)
-      args.each { |arg| self.class_variable_get(:@@initialize_args) << arg }
+      args.each {|arg| self.class_variable_get(:@@initialize_args) << arg}
     end
 
-    def self.attr_writer *args
+    def self.attr_writer(*args)
       super(*args)
-      args.each { |arg| self.class_variable_get(:@@initialize_args) << arg }
+      args.each {|arg| self.class_variable_get(:@@initialize_args) << arg}
     end
 
-    def self.attr_accessor *args
+    def self.attr_accessor(*args)
       super(*args)
-      args.each { |arg| self.class_variable_get(:@@initialize_args) << arg }
+      args.each {|arg| self.class_variable_get(:@@initialize_args) << arg}
     end
 
     private

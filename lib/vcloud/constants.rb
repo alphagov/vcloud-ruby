@@ -28,8 +28,8 @@ module VCloud
 
     # vCloud Director API XML namespaces.
     module NameSpace
-      V1_5 = 'http://www.vmware.com/vcloud/v1.5'
       OVF = 'http://schemas.dmtf.org/ovf/envelope/1'
+      V1_5 = 'http://www.vmware.com/vcloud/v1.5'
       XSI = 'http://www.w3.org/2001/XMLSchema-instance'
     end
   end

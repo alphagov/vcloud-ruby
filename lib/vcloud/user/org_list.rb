@@ -2,6 +2,7 @@ module VCloud
   # Represents a list of organizations.
   class OrgList < BaseVCloudEntity
     include ParsesXml
+
     has_type VCloud::Constants::ContentType::ORG_LIST
     has_default_attributes
     tag 'OrgList'

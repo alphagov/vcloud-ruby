@@ -1,6 +1,6 @@
 module VCloud
-  # Defines a hyper-link with a relationship, hyper-link reference, and an
-  #   optional MIME type.
+  # Defines a hyperlink with a relationship, hyperlink reference, and an
+  # optional MIME type.
   class Link
     include HappyMapper
 
@@ -16,7 +16,7 @@ module VCloud
     # @option args [String] :type
     # @option args [String] :name
     # @option args [String] :href
-    def initialize(args = {})
+    def initialize(args={})
       @rel = args[:rel]
       @type = args[:type]
       @name = args[:name]
@@ -24,8 +24,8 @@ module VCloud
     end
 
     # Parses XML to produce a VCloud::Link.
-    # @param [String] xml XML to parse
-    # @return [VCloud::Link] Link object parsed from the XML
+    # @param [String] xml XML to parse.
+    # @return [VCloud::Link] Link object parsed from the XML.
     def self.from_xml(xml)
       parse(xml)
     end

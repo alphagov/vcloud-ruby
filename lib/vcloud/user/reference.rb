@@ -1,6 +1,6 @@
 module VCloud
   # A reference to a resource. Contains an href attribute and optional name and
-  #   type attributes.
+  # type attributes.
   class Reference
     include HappyMapper
 
@@ -10,7 +10,12 @@ module VCloud
     attribute :name, 'String'
     attribute :href, 'String'
 
-    def initialize(args = {})
+    # @param [Hash] args
+    # @option args [String] :id
+    # @option args [String] :type
+    # @option args [String] :name
+    # @option args [String] :href
+    def initialize(args={})
       @rel = args[:id]
       @type = args[:type]
       @name = args[:name]
@@ -18,8 +23,8 @@ module VCloud
     end
 
     # Parse a VCloud::Reference from XML.
-    # @param [String] xml XML to parse
-    # @return [VCloud::Reference] Reference that is parsed from the XML
+    # @param [String] xml XML to parse.
+    # @return [VCloud::Reference] Reference that is parsed from the XML.
     def self.from_xml(xml)
       parse(xml)
     end
