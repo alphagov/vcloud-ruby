@@ -1,16 +1,15 @@
 require 'spec_helper'
 
 describe VCloud::NetworkConfig do
-
   describe 'when parsing #from_xml' do
     before(:each) do
       @config = VCloud::NetworkConfig.from_xml(fixture_file('network_config.xml'))
     end
 
     it 'should have correct values' do
-       @config.network_name.should == 'TestVappNetworkConfigNetwork'
-       @config.parent_network_reference.href.should == 'http://parentnetwork.com'
-       @config.fence_mode.should == 'bridged'
+      @config.network_name.should == 'TestVappNetworkConfigNetwork'
+      @config.parent_network_reference.href.should == 'http://parentnetwork.com'
+      @config.fence_mode.should == 'bridged'
     end
   end
 
@@ -27,5 +26,4 @@ describe VCloud::NetworkConfig do
     doc.xpath('/NetworkConfig/Configuration/ParentNetwork/@href').text.should == 'http://parentnetwork.com'
     doc.xpath('/NetworkConfig/Configuration/FenceMode').text.should == 'isolated'
   end
-
 end

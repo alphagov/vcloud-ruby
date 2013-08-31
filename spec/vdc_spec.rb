@@ -15,11 +15,11 @@ describe VCloud::Vdc do
       @vdc.href.should == 'https://some.vcloud.com/api/vdc/aaa-bbb-ccc-ddd-eee-fff'
     end
 
-    it 'should parese a network references' do
+    it 'should parse a network references' do
       @vdc.network_references.should_not be_nil
       @vdc.network_references.should have(1).items
-      @vdc.network_references.first.name.should == "Dev VLAN"
-      @vdc.network_references.first.href.should == "https://some.vcloud.com/api/network/aaa-bbb-ccc-ddd-eee-fff"
+      @vdc.network_references.first.name.should == 'Dev VLAN'
+      @vdc.network_references.first.href.should == 'https://some.vcloud.com/api/network/aaa-bbb-ccc-ddd-eee-fff'
     end
 
     it 'should parse links' do
@@ -79,5 +79,4 @@ describe VCloud::Vdc do
 
     vapp.session.should == @session
   end
-
 end

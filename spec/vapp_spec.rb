@@ -3,7 +3,6 @@ require 'spec_helper'
 include WebMock::API
 
 describe VCloud::VApp do
-
   before(:each) do
     @vapp = VCloud::VApp.from_xml(fixture_file('vapp.xml'))
     @vapp.session = @session
@@ -11,10 +10,10 @@ describe VCloud::VApp do
 
   describe 'parses xml #from_xml' do
     it 'should have correct values' do
-      @vapp.name.should == "Linux FTP server"
+      @vapp.name.should == 'Linux FTP server'
       @vapp.id.should == 'urn:vcloud:vapp:aaa-bbb-ccc-ddd-eee-fff'
       @vapp.type.should == 'application/vnd.vmware.vcloud.vApp+xml'
-      @vapp.href.should == "https://some.vcloud.com/api/vApp/vapp-aaa-bbb-ccc-ddd-eee-fff"
+      @vapp.href.should == 'https://some.vcloud.com/api/vApp/vapp-aaa-bbb-ccc-ddd-eee-fff'
     end
 
     it 'should parse links' do
@@ -43,19 +42,19 @@ describe VCloud::VApp do
     end
   end
 
-  it "retrieves a VApp" do
+  it 'retrieves a VApp' do
     stub_request(:get, 'https://some.vcloud.com/api/vApp/vapp-aaa-bbb-ccc-ddd-eee-fff').
       with(:headers => {'Accept'=>'application/vnd.vmware.vcloud.vApp+xml;version=1.5', 'X-Vcloud-Authorization'=>'abc123xyz'}).
       to_return(:status => 200, :body => fixture_file('vapp.xml'))
 
     vapp = VCloud::VApp.from_reference(double(:href => 'https://some.vcloud.com/api/vApp/vapp-aaa-bbb-ccc-ddd-eee-fff'), @session)
 
-    vapp.name.should == "Linux FTP server"
+    vapp.name.should == 'Linux FTP server'
     vapp.href.should == 'https://some.vcloud.com/api/vApp/vapp-aaa-bbb-ccc-ddd-eee-fff'
   end
 
   it 'should #power_on' do
-    stub_request(:post, 'https://vcloud.diebold.dev/api/vApp/vapp-1/power/action/powerOn').
+    stub_request(:post, 'https://some.vcloud.com/api/vApp/vapp-1/power/action/powerOn').
       with(:headers => {'Accept'=>'application/*+xml;version=1.5', 'X-Vcloud-Authorization'=>'abc123xyz'}).
       to_return(:status => 200, :body => fixture_file('task.xml'))
 
@@ -64,7 +63,7 @@ describe VCloud::VApp do
   end
 
   it 'should #remove' do
-    stub_request(:delete, 'https://vcloud.diebold.dev/api/vApp/vapp-1').
+    stub_request(:delete, 'https://some.vcloud.com/api/vApp/vapp-1').
       with(:headers => {'Accept'=>'application/*+xml;version=1.5', 'X-Vcloud-Authorization'=>'abc123xyz'}).
       to_return(:status => 200, :body => fixture_file('task.xml'))
 
@@ -73,7 +72,7 @@ describe VCloud::VApp do
   end
 
   it 'should #undeploy' do
-    stub_request(:post, 'https://vcloud.diebold.dev/api/vApp/vapp-1/action/undeploy').
+    stub_request(:post, 'https://some.vcloud.com/api/vApp/vapp-1/action/undeploy').
       with(:headers => {'Content-Type'=>'application/vnd.vmware.vcloud.undeployVAppParams+xml','Accept'=>'application/*+xml;version=1.5', 'X-Vcloud-Authorization'=>'abc123xyz'},
            :body => lambda{p=VCloud::UndeployVAppParams.new;p.undeploy_power_action='powerOff';p.to_xml}.call).
       to_return(:status => 200, :body => fixture_file('task.xml'))
@@ -81,5 +80,4 @@ describe VCloud::VApp do
     task = @vapp.undeploy('powerOff')
     task.should_not be_nil
   end
-
 end

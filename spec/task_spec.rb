@@ -12,7 +12,7 @@ describe VCloud::Task do
       @task.name.should == 'task'
       @task.id.should == 'urn:vcloud:task:5acdbbab-0496-4a57-bf81-cec0be0ae8fb'
       @task.type.should == 'application/vnd.vmware.vcloud.task+xml'
-      @task.href.should == "https://vcloud.com/api/task/5acdbbab-0496-4a57-bf81-cec0be0ae8fb"
+      @task.href.should == 'https://vcloud.com/api/task/5acdbbab-0496-4a57-bf81-cec0be0ae8fb'
       @task.status.should == 'running'
       @task.start_time.should == '2012-10-01T15:31:10.175-04:00'
       @task.operation_name.should == 'vappUndeployPowerOff'

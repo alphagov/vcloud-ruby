@@ -3,7 +3,6 @@ require 'spec_helper'
 include WebMock::API
 
 describe VCloud::InstantiateVAppTemplateParams do
-
   it 'should #initialize' do
     params = VCloud::InstantiateVAppTemplateParams.new
     params.name.should == ''
@@ -33,8 +32,7 @@ describe VCloud::InstantiateVAppTemplateParams do
     end
   end
 
-
-  it "should serialize #to_xml" do
+  it 'should serialize #to_xml' do
     params = VCloud::InstantiateVAppTemplateParams.new
     params.name = 'SomeVAppTemplateParams'
     params.deploy = false
@@ -48,8 +46,8 @@ describe VCloud::InstantiateVAppTemplateParams do
     xml = params.to_xml
     doc = Nokogiri::XML(xml)
 
-    doc.xpath('/xmlns:InstantiateVAppTemplateParams/@name').text.should == "SomeVAppTemplateParams"
-    doc.xpath('/xmlns:InstantiateVAppTemplateParams/@deploy').text.should == "false"
+    doc.xpath('/xmlns:InstantiateVAppTemplateParams/@name').text.should == 'SomeVAppTemplateParams'
+    doc.xpath('/xmlns:InstantiateVAppTemplateParams/@deploy').text.should == 'false'
     doc.xpath('/xmlns:InstantiateVAppTemplateParams/@powerOn').text.should == 'true'
     doc.xpath('/xmlns:InstantiateVAppTemplateParams/xmlns:Description').text.should == 'some descriptive string'
     doc.xpath('/xmlns:InstantiateVAppTemplateParams/xmlns:InstantiationParams/xmlns:NetworkConfigSection').text.should == 'blagow'

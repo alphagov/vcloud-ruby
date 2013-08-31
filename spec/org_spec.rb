@@ -20,17 +20,17 @@ describe VCloud::Org do
 
     it 'should filter #vdc_links' do
       @org.vdc_links.should have(1).item
-      @org.vdc_links[0].type.should == "application/vnd.vmware.vcloud.vdc+xml"
+      @org.vdc_links[0].type.should == 'application/vnd.vmware.vcloud.vdc+xml'
     end
 
     it 'should filter #catalog_links' do
       @org.catalog_links.should have(1).item
-      @org.catalog_links[0].type.should == "application/vnd.vmware.vcloud.catalog+xml"
+      @org.catalog_links[0].type.should == 'application/vnd.vmware.vcloud.catalog+xml'
     end
 
     it 'should filter #org_network_links' do
       @org.org_network_links.should have(1).item
-      @org.org_network_links[0].type.should == "application/vnd.vmware.vcloud.orgNetwork+xml"
+      @org.org_network_links[0].type.should == 'application/vnd.vmware.vcloud.orgNetwork+xml'
     end
 
     it 'should #get_catalog_links_by_name' do
@@ -79,7 +79,7 @@ describe VCloud::Org do
   end
 
   it 'should retrieve organization #from_reference' do
-    stub_request(:get, "https://some.vcloud.com/api/org/aaa-bbb-ccc-ddd-eee-fff").
+    stub_request(:get, 'https://some.vcloud.com/api/org/aaa-bbb-ccc-ddd-eee-fff').
       with(:headers => {'Accept'=>'application/vnd.vmware.vcloud.org+xml;version=1.5', 'X-Vcloud-Authorization'=>'abc123xyz'}).
       to_return(:status => 200, :body => fixture_file('org.xml'))
 

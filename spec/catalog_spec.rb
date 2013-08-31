@@ -41,14 +41,14 @@ describe VCloud::Catalog do
     item.should be_nil
   end
 
-  it "should retrieve catalog #from_reference" do
-    stub_request(:get, "https://vcloud.diebold.dev/api/catalog/aaa-bbb-ccc-ddd-eee-fff").
+  it 'should retrieve catalog #from_reference' do
+    stub_request(:get, 'https://some.vcloud.com/api/catalog/aaa-bbb-ccc-ddd-eee-fff').
       with(:headers => {'Accept'=>'application/vnd.vmware.vcloud.catalog+xml;version=1.5', 'X-Vcloud-Authorization'=>'abc123xyz'}).
       to_return(:status => 200, :body => fixture_file('catalog.xml'))
 
-    catalog = VCloud::Catalog.from_reference(double(:href => 'https://vcloud.diebold.dev/api/catalog/aaa-bbb-ccc-ddd-eee-fff'), @session)
+    catalog = VCloud::Catalog.from_reference(double(:href => 'https://some.vcloud.com/api/catalog/aaa-bbb-ccc-ddd-eee-fff'), @session)
 
-    WebMock.should have_requested(:get, 'https://vcloud.diebold.dev/api/catalog/aaa-bbb-ccc-ddd-eee-fff').
+    WebMock.should have_requested(:get, 'https://some.vcloud.com/api/catalog/aaa-bbb-ccc-ddd-eee-fff').
       with(:headers => {'Accept'=>'application/vnd.vmware.vcloud.catalog+xml;version=1.5', 'X-Vcloud-Authorization'=>'abc123xyz'})
 
     @catalog.name.should == 'SuperCool Catalog'
