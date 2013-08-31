@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.authors = ['Nick Osborn', 'Brian McClain', 'Zach Robinson']
   s.homepage = 'https://github.com/nosborn/vcloud-ruby'
 
-  s.required_ruby_version = '>= 1.9.1'
+  s.required_ruby_version = '>= 1.9.2'
 
   s.add_dependency 'nokogiri-happymapper', '< 0.5.7'
   s.add_dependency 'rest-client'
