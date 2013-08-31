@@ -8,7 +8,7 @@ branches:
   only:
     master
 
-bundler_args: --without='development documentation'
+bundler_args: --without=development
 
 notifications:
   email: false
