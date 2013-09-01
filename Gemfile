@@ -4,11 +4,13 @@ gemspec
 
 gem 'rake', :group => [:development, :test]
 
-group :development do
-  gem 'awesome_print'
-  gem 'pry'
+group :documentation do
   gem 'redcarpet'
   gem 'yard'
+end
+
+group :repl do
+  gem 'pry'
 end
 
 group :test do
